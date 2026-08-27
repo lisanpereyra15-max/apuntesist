@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,49 +6,129 @@
     <title>Apuntes Ingeniería en Sistemas</title>
     <style>
         :root {
-            --bg-color: #0b1120;
-            --card-bg: #1e293b;
+            --bg-grad: linear-gradient(135deg, #020617, #0f172a, #1e1b4b);
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --card-border: rgba(255, 255, 255, 0.1);
             --text-main: #f8fafc;
             --accent-blue: #3b82f6;
-            --accent-hover: #2563eb;
+            --accent-glow: rgba(59, 130, 246, 0.4);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); display: flex; flex-direction: column; min-height: 100vh; }
-        header { background-color: var(--card-bg); padding: 20px; text-align: center; border-bottom: 3px solid var(--accent-blue); }
-        header h1 { font-size: 2rem; margin-bottom: 5px; }
-        main { flex: 1; padding: 40px 20px; max-width: 1000px; margin: 0 auto; width: 100%; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .card { background-color: var(--card-bg); padding: 20px; border-radius: 8px; text-align: center; text-decoration: none; color: var(--text-main); border: 1px solid transparent; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: center; }
-        .card:hover { border-color: var(--accent-blue); transform: translateY(-5px); box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2); }
-        .card h3 { margin-bottom: 15px; }
-        .disabled { opacity: 0.5; pointer-events: none; cursor: not-allowed; }
-        .donation-section { margin-top: 50px; padding: 20px; background-color: var(--card-bg); border-radius: 8px; text-align: center; border: 1px dashed var(--accent-blue); }
-        .alias-box { background-color: var(--bg-color); padding: 10px; border-radius: 5px; font-family: monospace; font-size: 1.2rem; color: var(--accent-blue); display: inline-block; margin-top: 10px; }
-        footer { text-align: center; padding: 20px; background-color: var(--card-bg); font-size: 0.9rem; }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        
+        body { 
+            background: var(--bg-grad); 
+            color: var(--text-main); 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            background-attachment: fixed;
+        }
+
+        header { 
+            padding: 40px 20px; 
+            text-align: center; 
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 { 
+            font-size: 2.5rem; 
+            background: -webkit-linear-gradient(#60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        main { flex: 1; padding: 50px 20px; max-width: 1000px; margin: 0 auto; width: 100%; text-align: center;}
+        
+        main h2 { margin-bottom: 30px; font-weight: 400; color: #cbd5e1; }
+
+        .grid-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+        }
+
+        .card { 
+            background: var(--card-bg); 
+            padding: 30px 20px; 
+            border-radius: 16px; 
+            text-decoration: none; 
+            color: var(--text-main); 
+            border: 1px solid var(--card-border); 
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+        }
+
+        .card:hover { 
+            border-color: var(--accent-blue); 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 25px var(--accent-glow); 
+            background: rgba(30, 41, 59, 0.8);
+        }
+
+        .card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        
+        .disabled { opacity: 0.4; pointer-events: none; }
+        .disabled:hover { transform: none; box-shadow: none; border-color: var(--card-border); }
+
+        /* Alias Flotante */
+        .floating-alias {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--accent-blue);
+            color: #93c5fd;
+            padding: 12px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .floating-alias:hover {
+            transform: scale(1.05);
+            background: var(--accent-blue);
+            color: white;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .alias-bold { font-weight: bold; font-family: monospace; font-size: 1.1rem; letter-spacing: 1px;}
     </style>
 </head>
 <body>
 
     <header>
-        <h1>📚 Apuntes Ingeniería en Sistemas</h1>
-        <p>Repositorio de apuntes y resúmenes</p>
+        <h1>Apuntes de Ingeniería en Sistemas</h1>
+        <p>Repositorio colaborativo de resúmenes y material de estudio</p>
     </header>
 
     <main>
-        <h2>Selecciona tu año cursado</h2>
+        <h2>Selecciona tu año de cursado</h2>
         
         <div class="grid-container">
             <a href="primer-año.html" class="card">
                 <h3>1° Año</h3>
-                <p>Ver materias y apuntes</p>
+                <p>Materias básicas y programación</p>
             </a>
             
             <a href="segundo-año.html" class="card">
                 <h3>2° Año</h3>
-                <p>Ver materias y apuntes</p>
+                <p>Análisis, diseño y sistemas</p>
             </a>
 
-            <!-- Años deshabilitados -->
             <div class="card disabled">
                 <h3>3° Año</h3>
                 <p>Próximamente...</p>
@@ -63,18 +142,12 @@
                 <p>Próximamente...</p>
             </div>
         </div>
-
-        <section class="donation-section">
-            <h2>☕ Contribuciones Voluntarias</h2>
-            <p>Si estos apuntes te sirvieron para aprobar, podés dar una mano para mantener el proyecto con un aporte voluntario.</p>
-            <p>Alias de MercadoPago/Banco:</p>
-            <div class="alias-box">licho.6</div>
-        </section>
     </main>
 
-    <footer>
-        <p>Hecho para estudiantes de Sistemas.</p>
-    </footer>
+    <!-- Alias Flotante -->
+    <div class="floating-alias" title="¡Gracias por tu aporte!">
+        ☕ Aporte voluntario: <span class="alias-bold">licho.6</span>
+    </div>
 
 </body>
 </html>

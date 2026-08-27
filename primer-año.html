@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,68 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1° Año - Apuntes</title>
     <style>
-        :root { --bg-color: #0b1120; --card-bg: #1e293b; --text-main: #f8fafc; --accent-blue: #3b82f6; --accent-hover: #2563eb; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); display: flex; flex-direction: column; min-height: 100vh; }
-        header { background-color: var(--card-bg); padding: 20px; text-align: center; border-bottom: 3px solid var(--accent-blue); }
-        header h1 { font-size: 2rem; margin-bottom: 5px; }
-        header a { color: var(--accent-blue); text-decoration: none; font-weight: bold; font-size: 1.1rem;}
-        main { flex: 1; padding: 40px 20px; max-width: 1000px; margin: 0 auto; width: 100%; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .card { background-color: var(--card-bg); padding: 20px; border-radius: 8px; text-align: center; border: 1px solid transparent; display: flex; flex-direction: column; justify-content: center; }
-        .card h3 { margin-bottom: 15px; }
-        .btn-apunte { background-color: var(--accent-blue); color: white; padding: 10px 15px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: background 0.3s; }
-        .btn-apunte:hover { background-color: var(--accent-hover); }
+        :root {
+            --bg-grad: linear-gradient(135deg, #020617, #0f172a, #1e1b4b);
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --accent-blue: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.4);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: var(--bg-grad); color: var(--text-main); min-height: 100vh; background-attachment: fixed; }
+        header { padding: 30px 20px; text-align: center; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px); border-bottom: 1px solid var(--card-border); }
+        header h1 { font-size: 2.2rem; color: #60a5fa; margin-bottom: 15px;}
+        header a { color: #93c5fd; text-decoration: none; border: 1px solid rgba(147,197,253,0.3); padding: 8px 16px; border-radius: 20px; transition: 0.3s; }
+        header a:hover { background: rgba(147,197,253,0.1); color: white;}
+        main { padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
+        
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        
+        .card { 
+            background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); 
+            backdrop-filter: blur(12px); padding: 20px; cursor: pointer; transition: all 0.3s ease;
+        }
+        .card:hover { border-color: var(--accent-blue); box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2); }
+        .card h3 { display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: 500;}
+        .card h3::after { content: '+'; font-size: 1.5rem; color: var(--accent-blue); transition: transform 0.3s; }
+        .card.active h3::after { transform: rotate(45deg); }
+        
+        /* Panel desplegable de Links */
+        .panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+        }
+        .card.active .panel { opacity: 1; }
+        
+        .panel a {
+            background: rgba(0, 0, 0, 0.3);
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+        }
+        .panel a:hover { background: rgba(59, 130, 246, 0.15); border-left-color: var(--accent-blue); color: white; padding-left: 20px;}
+        
+        .floating-alias { position: fixed; bottom: 20px; right: 20px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--accent-blue); color: #93c5fd; padding: 10px 15px; border-radius: 50px; font-size: 0.85rem; backdrop-filter: blur(8px); z-index: 1000;}
     </style>
 </head>
 <body>
 
     <header>
-        <h1>📘 Materias de 1° Año</h1>
-        <br>
+        <h1>1° Año</h1>
         <a href="index.html">← Volver al inicio</a>
     </header>
 
     <main>
         <div class="grid-container">
-            <div class="card">
+            
+            <!-- EJEMPLO DE MATERIA (Repetí esta estructura) -->
+            <div class="card" onclick="togglePanel(this)">
                 <h3>Análisis Matemático 1</h3>
-                <a href="LINK_DE_TU_APUNTE_ACA" target="_blank" class="btn-apunte">Ver Apunte</a>
+                <div class="panel">
+                    <a href="LINK_ACA" target="_blank">📄 Resumen 1er Parcial</a>
+                    <a href="LINK_ACA" target="_blank">📄 Resumen 2do Parcial</a>
+                    <a href="LINK_ACA" target="_blank">📝 Ejercicios Resueltos</a>
+                </div>
             </div>
-            <div class="card">
+
+            <div class="card" onclick="togglePanel(this)">
                 <h3>Física 1</h3>
-                <a href="LINK_DE_TU_APUNTE_ACA" target="_blank" class="btn-apunte">Ver Apunte</a>
+                <div class="panel">
+                    <a href="LINK_ACA" target="_blank">📚 Apunte Completo</a>
+                    <a href="LINK_ACA" target="_blank">🧪 Fórmulas Clave</a>
+                </div>
             </div>
-            <div class="card">
+
+            <div class="card" onclick="togglePanel(this)">
                 <h3>Arquitectura de Computadoras</h3>
-                <a href="LINK_DE_TU_APUNTE_ACA" target="_blank" class="btn-apunte">Ver Apunte</a>
+                <div class="panel">
+                    <a href="LINK_ACA" target="_blank">📄 Resumen Teoría</a>
+                </div>
             </div>
-            <div class="card">
+
+            <div class="card" onclick="togglePanel(this)">
                 <h3>Algoritmos y Estructura de Datos</h3>
-                <a href="LINK_DE_TU_APUNTE_ACA" target="_blank" class="btn-apunte">Ver Apunte</a>
+                <div class="panel">
+                    <a href="LINK_ACA" target="_blank">💻 Códigos de ejemplo</a>
+                    <a href="LINK_ACA" target="_blank">📄 Resumen</a>
+                </div>
             </div>
-            <div class="card">
+
+            <div class="card" onclick="togglePanel(this)">
                 <h3>Álgebra</h3>
-                <a href="LINK_DE_TU_APUNTE_ACA" target="_blank" class="btn-apunte">Ver Apunte</a>
+                <div class="panel">
+                    <a href="LINK_ACA" target="_blank">📄 Apuntes de clase</a>
+                </div>
             </div>
-            <div class="card">
+
+            <div class="card" onclick="togglePanel(this)">
                 <h3>Inglés 1</h3>
-                <a href="LINK_DE_TU_APUNTE_ACA" target="_blank" class="btn-apunte">Ver Apunte</a>
+                <div class="panel">
+                    <a href="LINK_ACA" target="_blank">📄 Vocabulario técnico</a>
+                </div>
             </div>
-            <div class="card">
+
+            <div class="card" onclick="togglePanel(this)">
                 <h3>Ingeniería y Sociedad</h3>
-                <a href="LINK_DE_TU_APUNTE_ACA" target="_blank" class="btn-apunte">Ver Apunte</a>
+                <div class="panel">
+                    <a href="LINK_ACA" target="_blank">📄 Resúmenes por unidad</a>
+                </div>
             </div>
-            <div class="card">
+
+            <div class="card" onclick="togglePanel(this)">
                 <h3>Lógica y Estructuras Discretas</h3>
-                <a href="LINK_DE_TU_APUNTE_ACA" target="_blank" class="btn-apunte">Ver Apunte</a>
+                <div class="panel">
+                    <a href="LINK_ACA" target="_blank">📄 Tablas de verdad y grafos</a>
+                </div>
             </div>
-            <div class="card">
+
+            <div class="card" onclick="togglePanel(this)">
                 <h3>Sistemas y Procesos de Negocios</h3>
-                <a href="LINK_DE_TU_APUNTE_ACA" target="_blank" class="btn-apunte">Ver Apunte</a>
+                <div class="panel">
+                    <a href="LINK_ACA" target="_blank">📄 Diagramas y teoría</a>
+                </div>
             </div>
+
         </div>
     </main>
 
+    <div class="floating-alias">Alias: licho.6</div>
+
+    <script>
+        function togglePanel(element) {
+            // Cierra los otros paneles abiertos
+            document.querySelectorAll('.card').forEach(card => {
+                if (card !== element) {
+                    card.classList.remove('active');
+                    let p = card.querySelector('.panel');
+                    p.style.maxHeight = null;
+                    p.style.marginTop = "0";
+                }
+            });
+
+            // Abre o cierra el que tocaste
+            element.classList.toggle("active");
+            let panel = element.querySelector('.panel');
+            
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+                panel.style.marginTop = "0";
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+                panel.style.marginTop = "15px";
+            }
+        }
+    </script>
 </body>
 </html>
