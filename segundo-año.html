@@ -5,15 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2° Año - Apuntes</title>
     <style>
-        /* Mismos estilos que el de primer año para mantener consistencia */
-        :root {
-            --bg-grad: linear-gradient(135deg, #020617, #0f172a, #1e1b4b);
-            --card-bg: rgba(30, 41, 59, 0.6);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --text-main: #f8fafc;
-            --accent-blue: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.4);
-        }
+        :root { --bg-grad: linear-gradient(135deg, #020617, #0f172a, #1e1b4b); --card-bg: rgba(30, 41, 59, 0.6); --card-border: rgba(255, 255, 255, 0.1); --text-main: #f8fafc; --accent-blue: #3b82f6; --accent-glow: rgba(59, 130, 246, 0.4); }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background: var(--bg-grad); color: var(--text-main); min-height: 100vh; background-attachment: fixed; }
         header { padding: 30px 20px; text-align: center; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px); border-bottom: 1px solid var(--card-border); }
@@ -21,31 +13,19 @@
         header a { color: #93c5fd; text-decoration: none; border: 1px solid rgba(147,197,253,0.3); padding: 8px 16px; border-radius: 20px; transition: 0.3s; }
         header a:hover { background: rgba(147,197,253,0.1); color: white;}
         main { padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
-        
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        
-        .card { 
-            background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); 
-            backdrop-filter: blur(12px); padding: 20px; cursor: pointer; transition: all 0.3s ease;
-        }
+        .card { background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); backdrop-filter: blur(12px); padding: 20px; cursor: pointer; transition: all 0.3s ease; }
         .card:hover { border-color: var(--accent-blue); box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2); }
         .card h3 { display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: 500;}
         .card h3::after { content: '+'; font-size: 1.5rem; color: var(--accent-blue); transition: transform 0.3s; }
         .card.active h3::after { transform: rotate(45deg); }
-        
-        .panel {
-            max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.3s ease;
-            display: flex; flex-direction: column; gap: 10px; opacity: 0;
-        }
+        .panel { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.3s ease; display: flex; flex-direction: column; gap: 8px; opacity: 0; }
         .card.active .panel { opacity: 1; }
-        
-        .panel a {
-            background: rgba(0, 0, 0, 0.3); color: #e2e8f0; text-decoration: none; padding: 12px 15px;
-            border-radius: 8px; border-left: 3px solid transparent; transition: all 0.2s ease; font-size: 0.95rem;
-        }
+        .panel a { background: rgba(0, 0, 0, 0.3); color: #e2e8f0; text-decoration: none; padding: 10px 15px; border-radius: 8px; border-left: 3px solid transparent; transition: all 0.2s ease; font-size: 0.9rem; display: flex; justify-content: space-between;}
         .panel a:hover { background: rgba(59, 130, 246, 0.15); border-left-color: var(--accent-blue); color: white; padding-left: 20px;}
-        
-        .floating-alias { position: fixed; bottom: 20px; right: 20px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--accent-blue); color: #93c5fd; padding: 10px 15px; border-radius: 50px; font-size: 0.85rem; backdrop-filter: blur(8px); z-index: 1000;}
+        .floating-alias { position: fixed; bottom: 20px; right: 20px; background: rgba(15, 23, 42, 0.85); border: 1px solid var(--accent-blue); color: #93c5fd; padding: 8px 16px; border-radius: 50px; backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0,0,0,0.5); font-size: 0.85rem; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; z-index: 1000; }
+        .floating-alias:hover { transform: scale(1.05); background: var(--accent-blue); color: white; box-shadow: 0 0 20px var(--accent-glow); }
+        .alias-bold { font-weight: bold; font-family: monospace; font-size: 1rem; }
     </style>
 </head>
 <body>
@@ -61,72 +41,103 @@
             <div class="card" onclick="togglePanel(this)">
                 <h3>Análisis Matemático 2</h3>
                 <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Resumen 1er Parcial</a>
-                    <a href="LINK_ACA" target="_blank">📝 Integrales Múltiples</a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Práctico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Práctico)</span></a>
                 </div>
             </div>
 
             <div class="card" onclick="togglePanel(this)">
                 <h3>Física 2</h3>
                 <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📚 Electromagnetismo</a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Práctico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Práctico)</span></a>
                 </div>
             </div>
 
             <div class="card" onclick="togglePanel(this)">
                 <h3>Análisis de Sistemas</h3>
                 <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Casos de Uso</a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Práctico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Práctico)</span></a>
                 </div>
             </div>
 
             <div class="card" onclick="togglePanel(this)">
                 <h3>Inglés 2</h3>
                 <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Apunte Final</a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Práctico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Práctico)</span></a>
                 </div>
             </div>
 
             <div class="card" onclick="togglePanel(this)">
                 <h3>Legislación</h3>
                 <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Leyes clave</a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Práctico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Práctico)</span></a>
                 </div>
             </div>
 
             <div class="card" onclick="togglePanel(this)">
                 <h3>Paradigmas de Programación</h3>
                 <div class="panel">
-                    <a href="LINK_ACA" target="_blank">💻 Lógico y Funcional</a>
-                    <a href="LINK_ACA" target="_blank">💻 Orientado a Objetos</a>
+                    <a href="LINK_ACA" target="_blank">📝 Cuestionario 1</a>
+                    <a href="LINK_ACA" target="_blank">📝 Cuestionario 2</a>
+                    <a href="LINK_ACA" target="_blank">📝 Cuestionario 3</a>
+                    <a href="LINK_ACA" target="_blank">📝 Cuestionario 4</a>
+                    <a href="LINK_ACA" target="_blank">📝 Cuestionario 5</a>
+                    <a href="LINK_ACA" target="_blank">📝 Cuestionario 6</a>
                 </div>
             </div>
 
             <div class="card" onclick="togglePanel(this)">
                 <h3>Probabilidad y Estadística</h3>
                 <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Fórmulas</a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Práctico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Práctico)</span></a>
                 </div>
             </div>
 
             <div class="card" onclick="togglePanel(this)">
                 <h3>Sistemas Operativos</h3>
                 <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📚 Resumen Completo</a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Práctico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Práctico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 3 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 3 <span>(Práctico)</span></a>
                 </div>
             </div>
 
             <div class="card" onclick="togglePanel(this)">
                 <h3>Sintaxis y Semántica del Lenguaje</h3>
                 <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Expresiones Regulares</a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 1 <span>(Práctico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Teórico)</span></a>
+                    <a href="LINK_ACA" target="_blank">📄 Parcial 2 <span>(Práctico)</span></a>
                 </div>
             </div>
 
         </div>
     </main>
 
-    <div class="floating-alias">Alias: licho.6</div>
+    <div class="floating-alias" title="¡Gracias por tu aporte!">
+        ☕ Aporte voluntario: <span class="alias-bold">licho.6</span>
+    </div>
 
     <script>
         function togglePanel(element) {
@@ -138,10 +149,8 @@
                     p.style.marginTop = "0";
                 }
             });
-
             element.classList.toggle("active");
             let panel = element.querySelector('.panel');
-            
             if (panel.style.maxHeight) {
                 panel.style.maxHeight = null;
                 panel.style.marginTop = "0";

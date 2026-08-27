@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1° Año - Apuntes</title>
+    <title>Apuntes Ingeniería en Sistemas</title>
     <style>
         :root {
             --bg-grad: linear-gradient(135deg, #020617, #0f172a, #1e1b4b);
@@ -14,158 +14,61 @@
             --accent-glow: rgba(59, 130, 246, 0.4);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background: var(--bg-grad); color: var(--text-main); min-height: 100vh; background-attachment: fixed; }
-        header { padding: 30px 20px; text-align: center; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px); border-bottom: 1px solid var(--card-border); }
-        header h1 { font-size: 2.2rem; color: #60a5fa; margin-bottom: 15px;}
-        header a { color: #93c5fd; text-decoration: none; border: 1px solid rgba(147,197,253,0.3); padding: 8px 16px; border-radius: 20px; transition: 0.3s; }
-        header a:hover { background: rgba(147,197,253,0.1); color: white;}
-        main { padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
-        
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-        
-        .card { 
-            background: var(--card-bg); border-radius: 12px; border: 1px solid var(--card-border); 
-            backdrop-filter: blur(12px); padding: 20px; cursor: pointer; transition: all 0.3s ease;
-        }
-        .card:hover { border-color: var(--accent-blue); box-shadow: 0 5px 20px rgba(59, 130, 246, 0.2); }
-        .card h3 { display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: 500;}
-        .card h3::after { content: '+'; font-size: 1.5rem; color: var(--accent-blue); transition: transform 0.3s; }
-        .card.active h3::after { transform: rotate(45deg); }
-        
-        /* Panel desplegable de Links */
-        .panel {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            opacity: 0;
-        }
-        .card.active .panel { opacity: 1; }
-        
-        .panel a {
-            background: rgba(0, 0, 0, 0.3);
-            color: #e2e8f0;
-            text-decoration: none;
-            padding: 12px 15px;
-            border-radius: 8px;
-            border-left: 3px solid transparent;
-            transition: all 0.2s ease;
-            font-size: 0.95rem;
-        }
-        .panel a:hover { background: rgba(59, 130, 246, 0.15); border-left-color: var(--accent-blue); color: white; padding-left: 20px;}
-        
-        .floating-alias { position: fixed; bottom: 20px; right: 20px; background: rgba(15, 23, 42, 0.8); border: 1px solid var(--accent-blue); color: #93c5fd; padding: 10px 15px; border-radius: 50px; font-size: 0.85rem; backdrop-filter: blur(8px); z-index: 1000;}
+        body { background: var(--bg-grad); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; background-attachment: fixed; }
+        header { padding: 40px 20px; text-align: center; background: rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px); border-bottom: 1px solid var(--card-border); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); }
+        header h1 { font-size: 2.5rem; background: -webkit-linear-gradient(#60a5fa, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+        main { flex: 1; padding: 50px 20px; max-width: 1000px; margin: 0 auto; width: 100%; text-align: center;}
+        main h2 { margin-bottom: 30px; font-weight: 400; color: #cbd5e1; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: var(--card-bg); padding: 30px 20px; border-radius: 16px; text-decoration: none; color: var(--text-main); border: 1px solid var(--card-border); backdrop-filter: blur(12px); transition: all 0.3s ease; display: flex; flex-direction: column; align-items: center; }
+        .card:hover { border-color: var(--accent-blue); transform: translateY(-5px); box-shadow: 0 10px 25px var(--accent-glow); background: rgba(30, 41, 59, 0.8); }
+        .card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .disabled { opacity: 0.4; pointer-events: none; }
+        /* Alias Flotante Discreto */
+        .floating-alias { position: fixed; bottom: 20px; right: 20px; background: rgba(15, 23, 42, 0.85); border: 1px solid var(--accent-blue); color: #93c5fd; padding: 8px 16px; border-radius: 50px; backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0,0,0,0.5); font-size: 0.85rem; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; z-index: 1000; }
+        .floating-alias:hover { transform: scale(1.05); background: var(--accent-blue); color: white; box-shadow: 0 0 20px var(--accent-glow); }
+        .alias-bold { font-weight: bold; font-family: monospace; font-size: 1rem; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>1° Año</h1>
-        <a href="index.html">← Volver al inicio</a>
+        <h1>Apuntes de Ingeniería en Sistemas</h1>
+        <p>Repositorio colaborativo de resúmenes y material de estudio</p>
     </header>
 
     <main>
+        <h2>Selecciona tu año de cursado</h2>
+        
         <div class="grid-container">
+            <a href="primer-año.html" class="card">
+                <h3>1° Año</h3>
+                <p>Materias básicas y programación</p>
+            </a>
             
-            <!-- EJEMPLO DE MATERIA (Repetí esta estructura) -->
-            <div class="card" onclick="togglePanel(this)">
-                <h3>Análisis Matemático 1</h3>
-                <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Resumen 1er Parcial</a>
-                    <a href="LINK_ACA" target="_blank">📄 Resumen 2do Parcial</a>
-                    <a href="LINK_ACA" target="_blank">📝 Ejercicios Resueltos</a>
-                </div>
-            </div>
+            <a href="segundo-año.html" class="card">
+                <h3>2° Año</h3>
+                <p>Análisis, diseño y sistemas</p>
+            </a>
 
-            <div class="card" onclick="togglePanel(this)">
-                <h3>Física 1</h3>
-                <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📚 Apunte Completo</a>
-                    <a href="LINK_ACA" target="_blank">🧪 Fórmulas Clave</a>
-                </div>
+            <div class="card disabled">
+                <h3>3° Año</h3>
+                <p>Próximamente...</p>
             </div>
-
-            <div class="card" onclick="togglePanel(this)">
-                <h3>Arquitectura de Computadoras</h3>
-                <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Resumen Teoría</a>
-                </div>
+            <div class="card disabled">
+                <h3>4° Año</h3>
+                <p>Próximamente...</p>
             </div>
-
-            <div class="card" onclick="togglePanel(this)">
-                <h3>Algoritmos y Estructura de Datos</h3>
-                <div class="panel">
-                    <a href="LINK_ACA" target="_blank">💻 Códigos de ejemplo</a>
-                    <a href="LINK_ACA" target="_blank">📄 Resumen</a>
-                </div>
+            <div class="card disabled">
+                <h3>5° Año</h3>
+                <p>Próximamente...</p>
             </div>
-
-            <div class="card" onclick="togglePanel(this)">
-                <h3>Álgebra</h3>
-                <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Apuntes de clase</a>
-                </div>
-            </div>
-
-            <div class="card" onclick="togglePanel(this)">
-                <h3>Inglés 1</h3>
-                <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Vocabulario técnico</a>
-                </div>
-            </div>
-
-            <div class="card" onclick="togglePanel(this)">
-                <h3>Ingeniería y Sociedad</h3>
-                <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Resúmenes por unidad</a>
-                </div>
-            </div>
-
-            <div class="card" onclick="togglePanel(this)">
-                <h3>Lógica y Estructuras Discretas</h3>
-                <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Tablas de verdad y grafos</a>
-                </div>
-            </div>
-
-            <div class="card" onclick="togglePanel(this)">
-                <h3>Sistemas y Procesos de Negocios</h3>
-                <div class="panel">
-                    <a href="LINK_ACA" target="_blank">📄 Diagramas y teoría</a>
-                </div>
-            </div>
-
         </div>
     </main>
 
-    <div class="floating-alias">Alias: licho.6</div>
+    <div class="floating-alias" title="¡Gracias por tu aporte!">
+        ☕ Aporte voluntario: <span class="alias-bold">licho.6</span>
+    </div>
 
-    <script>
-        function togglePanel(element) {
-            // Cierra los otros paneles abiertos
-            document.querySelectorAll('.card').forEach(card => {
-                if (card !== element) {
-                    card.classList.remove('active');
-                    let p = card.querySelector('.panel');
-                    p.style.maxHeight = null;
-                    p.style.marginTop = "0";
-                }
-            });
-
-            // Abre o cierra el que tocaste
-            element.classList.toggle("active");
-            let panel = element.querySelector('.panel');
-            
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-                panel.style.marginTop = "0";
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-                panel.style.marginTop = "15px";
-            }
-        }
-    </script>
 </body>
 </html>
