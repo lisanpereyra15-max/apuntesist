@@ -26,6 +26,35 @@
         .floating-alias { position: fixed; bottom: 20px; right: 20px; background: rgba(15, 23, 42, 0.85); border: 1px solid var(--accent-blue); color: #93c5fd; padding: 8px 16px; border-radius: 50px; backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0,0,0,0.5); font-size: 0.85rem; display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; z-index: 1000; }
         .floating-alias:hover { transform: scale(1.05); background: var(--accent-blue); color: white; box-shadow: 0 0 20px var(--accent-glow); }
         .alias-bold { font-weight: bold; font-family: monospace; font-size: 1rem; }
+        /* Tabla Top Donadores Flotante */
+        .top-donors {
+            position: fixed;
+            bottom: 70px; /* Esto lo ubica justo arriba del alias */
+            right: 20px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--accent-blue);
+            border-radius: 12px;
+            padding: 15px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            z-index: 999;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            width: 220px;
+        }
+        .top-donors h4 {
+            color: #fbbf24; /* Dorado para el trofeo */
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 5px;
+        }
+        .top-donors table { width: 100%; border-collapse: collapse; }
+        .top-donors td { padding: 6px 0; border-bottom: 1px dashed rgba(255,255,255,0.1); }
+        .top-donors tr:last-child td { border-bottom: none; }
+        .top-donors .monto { text-align: right; color: #34d399; font-weight: bold; }
+        .top-donors .empty { color: #64748b; font-style: italic; }
     </style>
 </head>
 <body>
@@ -134,7 +163,17 @@
 
         </div>
     </main>
-
+    <!-- Tabla Top Donadores -->
+    <div class="top-donors">
+        <h4>🏆 Top Donadores</h4>
+        <table>
+            <tr><td>1. Juan Romero</td><td class="monto">$500</td></tr>
+            <tr><td class="empty">2. ---</td><td class="monto empty">---</td></tr>
+            <tr><td class="empty">3. ---</td><td class="monto empty">---</td></tr>
+            <tr><td class="empty">4. ---</td><td class="monto empty">---</td></tr>
+            <tr><td class="empty">5. ---</td><td class="monto empty">---</td></tr>
+        </table>
+    </div>
     <div class="floating-alias" title="¡Gracias por tu aporte!">
         💵🙏 Aporte voluntario al alias: <span class="alias-bold">licho.6</span>
     </div>
