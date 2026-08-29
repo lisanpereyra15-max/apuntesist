@@ -175,9 +175,25 @@
             <tr><td class="empty">5. ---</td><td class="monto empty">---</td></tr>
         </table>
     </div>
-    <div class="floating-alias" title="¡Gracias por tu aporte!">
-        💵🙏 Aporte voluntario al alias: <span class="alias-bold">licho.6</span>
+    <div class="floating-alias" style="cursor: pointer;" onclick="copiarAlias(this)" title="¡Tocá para copiar!">
+        ☕ Aporte voluntario: <span class="alias-bold">licho.6</span>
     </div>
+
+    <script>
+        function copiarAlias(elemento) {
+            // Copia el alias al portapapeles
+            navigator.clipboard.writeText("licho.6").then(() => {
+                // Guarda el contenido original
+                let contenidoOriginal = elemento.innerHTML;
+                // Cambia el texto para avisar que se copió
+                elemento.innerHTML = "✅ ¡Alias copiado!";
+                // A los 2 segundos, vuelve a poner el texto original
+                setTimeout(() => {
+                    elemento.innerHTML = contenidoOriginal;
+                }, 2000);
+            });
+        }
+    </script>
 
     <script>
         function togglePanel(element) {
